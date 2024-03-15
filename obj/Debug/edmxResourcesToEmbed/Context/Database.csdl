@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="WebMVCModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="category">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="image" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="IsHome" Type="Boolean" />
+    <Property Name="Slug" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="DisplayOrder" Type="Int32" />
+    <Property Name="deleted" Type="Boolean" />
+    <Property Name="CeeateOnUtc" Type="DateTime" Precision="3" />
+    <Property Name="UpdateOnUtc" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="product">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="price" Type="Double" Nullable="false" />
+    <Property Name="brand" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="image" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="categoryid" Type="Int32" />
+    <Property Name="typeid" Type="Int32" />
+    <Property Name="brandid" Type="Int32" />
+    <Property Name="createdOnUtc" Type="DateTime" Precision="3" />
+    <Property Name="updateOnUtc" Type="DateTime" Precision="3" />
+    <Property Name="deleted" Type="Boolean" />
+    <Property Name="ShowOnHomePage" Type="Boolean" />
+    <Property Name="DisplayOrder" Type="Int32" />
+    <Property Name="slug" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="user">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="phone" Type="String" MaxLength="11" FixedLength="true" Unicode="true" />
+    <Property Name="address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="firstname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="lastname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="isAdmin" Type="Boolean" />
+  </EntityType>
+  <EntityContainer Name="WebMVC" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="categories" EntityType="Self.category" />
+    <EntitySet Name="products" EntityType="Self.product" />
+    <EntitySet Name="users" EntityType="Self.user" />
+    <EntitySet Name="Orders" EntityType="WebMVCModel.Order" />
+    <EntitySet Name="brands" EntityType="WebMVCModel.brand" />
+    <EntitySet Name="OrderDetails" EntityType="WebMVCModel.OrderDetail" />
+  </EntityContainer>
+  <EntityType Name="Order">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ProductId" Type="Int32" />
+    <Property Name="Price" Type="Double" />
+    <Property Name="Status" Type="Int32" />
+    <Property Name="CreateOnUtc" Type="DateTime" Precision="3" />
+    <Property Name="UserId" Type="Int32" />
+  </EntityType>
+  <EntityType Name="brand">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="avata" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Slug" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="ShowOnHomePage" Type="Boolean" />
+    <Property Name="DisplayOrder" Type="Boolean" />
+    <Property Name="CreateOnUtc" Type="DateTime" Precision="3" />
+    <Property Name="UpdateOnUtc" Type="DateTime" Precision="3" />
+    <Property Name="Delete" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="OrderDetail">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="OrderId" Type="Int32" />
+    <Property Name="ProductId" Type="Int32" />
+    <Property Name="Quantity" Type="Int32" />
+  </EntityType>
+</Schema>

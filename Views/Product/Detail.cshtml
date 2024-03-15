@@ -1,0 +1,126 @@
+﻿@model WebShop.Context.product
+
+@{
+    ViewBag.Title = "Detail";
+}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="jquery-3.7.1.min.js"></script>
+
+<script type="text/javascript">
+    $(function () {
+        $("#addtocart").click(function () {
+            var model = {};
+            //lấy id sản phẩm
+            model.Id = @Model.id;
+            // lấy số lượng đặt hàng
+            model.Quantity = $("#ipQuantity").val();
+            debugger;
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("AddToCart", "Cart")',
+                data:  JSON.stringify(model) ,
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                success: function () {
+                    alert("Thêm giỏ hàng thành công!")
+                    $('#CartCount').text(@Session["count"] + 1);
+                },
+                error: function () {
+                    alert("Lỗi trong khi thêm vào giỏ hàng!");
+                }
+            });
+            return false;
+        });
+    });
+</script>
+
+<section class="py-3 bg-light">
+    <div class="container">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="#">Trang chủ</a></li>
+            <li class="breadcrumb-item"><a href="#">chi tiết sản phẩm</a></li>
+            <li class="breadcrumb-item active" aria-current="page">@Model.name</li>
+        </ol>
+    </div>
+</section>
+<!-- ========================= SECTION CONTENT ========================= -->
+<section class="section-content bg-white padding-y">
+    <div class="container">
+        <!-- ============================ ITEM DETAIL ======================== -->
+        <div class="row">
+            <aside class="col-md-6">
+                <div class="card">
+                    <article class="gallery-wrap">
+                        <div class="img-big-wrap">
+                            <img src="@Url.Content("~/Content/images/items/"+Model.image)" alt="Product Image" />
+                        </div> <!-- slider-product.// -->
+                        <div class="thumbs-wrap">
+                            @*<a href="#" class="item-thumb"> <img src="~/Content/images/items/15.jpg"></a>
+                                <a href="#" class="item-thumb"> <img src="~/Content/images/items/15-1.jpg"></a>
+                                <a href="#" class="item-thumb"> <img src="~/Content/images/items/15-2.jpg"></a>
+                                <a href="#" class="item-thumb"> <img src="~/Content/images/items/15-1.jpg"></a>*@
+                        </div> <!-- slider-nav.// -->
+                    </article> <!-- gallery-wrap .end// -->
+                </div> <!-- card.// -->
+            </aside>
+            <main class="col-md-6">
+                <article class="product-info-aside">
+                    <h2 class="title mt-3">@Model.name </h2>
+                    <div class="rating-wrap my-3">
+                        <ul class="rating-stars">
+                            <li style="width:80%" class="stars-active">
+                                <i class="fa fa-star"></i> <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i> <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                            </li>
+                            <li>
+                                <i class="fa fa-star"></i> <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i> <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                            </li>
+                        </ul>
+                        <small class="label-rating text-muted">132 reviews</small>
+                        <small class="label-rating text-success"> <i class="fa fa-clipboard-check"></i> 154 orders </small>
+                    </div> <!-- rating-wrap.// -->
+                    <div class="mb-3">
+                        <var class="price h4">@Model.price</var>
+                        <span class="text-muted">USD 562.65 incl. VAT</span>
+                    </div> <!-- price-detail-wrap .// -->
+                    @*<p>
+                            @Model.ShortDes
+                        </p>*@
+
+                    <dl class="row">
+                        <dt class="col-sm-3">Manufacturer</dt>
+                        <dd class="col-sm-9"><a href="#">Great textile Ltd.</a></dd>
+                        <dt class="col-sm-3">Article number</dt>
+                        <dd class="col-sm-9">596 065</dd>
+                        <dt class="col-sm-3">Guarantee</dt>
+                        <dd class="col-sm-9">2 year</dd>
+                        <dt class="col-sm-3">Delivery time</dt>
+                        <dd class="col-sm-9">3-4 days</dd>
+                        <dt class="col-sm-3">Availabilty</dt>
+                        <dd class="col-sm-9">in Stock</dd>
+                    </dl>
+                    <div class="form-row  mt-4">
+                        <div class="form-group col-md flex-grow-0">
+                            <div class="input-group mb-3 input-spinner">
+                                <input type="text" id="ipQuantity" class="form-control" value="1" />
+                            </div>
+                        </div>
+                        <div class="form-group col-md">
+                            <a href="#" id="addtocart" class="btn btn-primary">
+                                <i class="fas fa-shopping-cart"></i>
+                                <span class="text" h>Add To Cart</span>
+                            </a>
+                        </div>
+                    </div> <!-- row.// -->
+                </article> <!-- product-info-aside .// -->
+            </main> <!-- col.// -->
+        </div> <!-- row.// -->
+        <!-- ================ ITEM DETAIL END .// ================= -->
+
+    </div> <!-- container .//  -->
+</section>
+<!-- ========================= SECTION CONTENT END// ========================= -->
+<!-- ========================= SECTION  ========================= -->

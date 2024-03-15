@@ -1,0 +1,108 @@
+﻿@model IEnumerable<WebShop.Context.product>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.price)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.brand)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.image)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.categoryid)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.typeid)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.brandid)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.createdOnUtc)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.updateOnUtc)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.deleted)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ShowOnHomePage)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DisplayOrder)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.slug)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.price)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.brand)
+        </td>
+        <td>
+            @if (!string.IsNullOrEmpty(item.image))
+            {
+                <img src="@Url.Content("~/Content/images/items/"+item.image)" alt="Product Image" style="max-width:100px; max-height:100px" />
+            }
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.categoryid)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.typeid)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.brandid)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.createdOnUtc)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.updateOnUtc)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.deleted)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ShowOnHomePage)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DisplayOrder)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.slug)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.id })
+        </td>
+    </tr>
+}
+
+</table>

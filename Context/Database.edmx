@@ -1,0 +1,309 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="WebMVCModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="brands">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nchar" MaxLength="10" />
+          <Property Name="avata" Type="nvarchar(max)" />
+          <Property Name="Slug" Type="varchar" MaxLength="100" />
+          <Property Name="ShowOnHomePage" Type="bit" />
+          <Property Name="DisplayOrder" Type="bit" />
+          <Property Name="CreateOnUtc" Type="datetime" />
+          <Property Name="UpdateOnUtc" Type="datetime" />
+          <Property Name="Delete" Type="bit" />
+        </EntityType>
+        <EntityType Name="categories">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="50" />
+          <Property Name="image" Type="nvarchar(max)" />
+          <Property Name="IsHome" Type="bit" />
+          <Property Name="Slug" Type="varchar" MaxLength="50" />
+          <Property Name="DisplayOrder" Type="int" />
+          <Property Name="deleted" Type="bit" />
+          <Property Name="CeeateOnUtc" Type="datetime" />
+          <Property Name="UpdateOnUtc" Type="datetime" />
+        </EntityType>
+        <EntityType Name="OrderDetails">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OrderId" Type="int" />
+          <Property Name="ProductId" Type="int" />
+          <Property Name="Quantity" Type="int" />
+        </EntityType>
+        <EntityType Name="Orders">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ProductId" Type="int" />
+          <Property Name="Price" Type="float" />
+          <Property Name="Status" Type="int" />
+          <Property Name="CreateOnUtc" Type="datetime" />
+          <Property Name="UserId" Type="int" />
+        </EntityType>
+        <EntityType Name="products">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="price" Type="float" Nullable="false" />
+          <Property Name="brand" Type="nvarchar" MaxLength="50" />
+          <Property Name="image" Type="nvarchar(max)" />
+          <Property Name="categoryid" Type="int" />
+          <Property Name="typeid" Type="int" />
+          <Property Name="brandid" Type="int" />
+          <Property Name="createdOnUtc" Type="datetime" />
+          <Property Name="updateOnUtc" Type="datetime" />
+          <Property Name="deleted" Type="bit" />
+          <Property Name="ShowOnHomePage" Type="bit" />
+          <Property Name="DisplayOrder" Type="int" />
+          <Property Name="slug" Type="varchar" MaxLength="50" />
+          <Property Name="description" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="users">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="email" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="password" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="phone" Type="nchar" MaxLength="11" />
+          <Property Name="address" Type="nvarchar(max)" />
+          <Property Name="firstname" Type="nvarchar" MaxLength="50" />
+          <Property Name="lastname" Type="nvarchar" MaxLength="50" />
+          <Property Name="isAdmin" Type="bit" />
+        </EntityType>
+        <EntityContainer Name="WebMVCModelStoreContainer">
+          <EntitySet Name="brands" EntityType="Self.brands" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="categories" EntityType="Self.categories" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OrderDetails" EntityType="Self.OrderDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Orders" EntityType="Self.Orders" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="products" EntityType="Self.products" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="users" EntityType="Self.users" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="WebMVCModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="category">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="image" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IsHome" Type="Boolean" />
+          <Property Name="Slug" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DisplayOrder" Type="Int32" />
+          <Property Name="deleted" Type="Boolean" />
+          <Property Name="CeeateOnUtc" Type="DateTime" Precision="3" />
+          <Property Name="UpdateOnUtc" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="product">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="price" Type="Double" Nullable="false" />
+          <Property Name="brand" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="image" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="categoryid" Type="Int32" />
+          <Property Name="typeid" Type="Int32" />
+          <Property Name="brandid" Type="Int32" />
+          <Property Name="createdOnUtc" Type="DateTime" Precision="3" />
+          <Property Name="updateOnUtc" Type="DateTime" Precision="3" />
+          <Property Name="deleted" Type="Boolean" />
+          <Property Name="ShowOnHomePage" Type="Boolean" />
+          <Property Name="DisplayOrder" Type="Int32" />
+          <Property Name="slug" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="user">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="phone" Type="String" MaxLength="11" FixedLength="true" Unicode="true" />
+          <Property Name="address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="firstname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="lastname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="isAdmin" Type="Boolean" />
+        </EntityType>
+        <EntityContainer Name="WebMVC" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="categories" EntityType="Self.category" />
+          <EntitySet Name="products" EntityType="Self.product" />
+          <EntitySet Name="users" EntityType="Self.user" />
+          <EntitySet Name="Orders" EntityType="WebMVCModel.Order" />
+          <EntitySet Name="brands" EntityType="WebMVCModel.brand" />
+          <EntitySet Name="OrderDetails" EntityType="WebMVCModel.OrderDetail" />
+        </EntityContainer>
+        <EntityType Name="Order">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ProductId" Type="Int32" />
+          <Property Name="Price" Type="Double" />
+          <Property Name="Status" Type="Int32" />
+          <Property Name="CreateOnUtc" Type="DateTime" Precision="3" />
+          <Property Name="UserId" Type="Int32" />
+        </EntityType>
+        <EntityType Name="brand">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="avata" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Slug" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ShowOnHomePage" Type="Boolean" />
+          <Property Name="DisplayOrder" Type="Boolean" />
+          <Property Name="CreateOnUtc" Type="DateTime" Precision="3" />
+          <Property Name="UpdateOnUtc" Type="DateTime" Precision="3" />
+          <Property Name="Delete" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="OrderDetail">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OrderId" Type="Int32" />
+          <Property Name="ProductId" Type="Int32" />
+          <Property Name="Quantity" Type="Int32" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="WebMVCModelStoreContainer" CdmEntityContainer="WebMVC">
+          <EntitySetMapping Name="categories">
+            <EntityTypeMapping TypeName="WebMVCModel.category">
+              <MappingFragment StoreEntitySet="categories">
+                <ScalarProperty Name="UpdateOnUtc" ColumnName="UpdateOnUtc" />
+                <ScalarProperty Name="CeeateOnUtc" ColumnName="CeeateOnUtc" />
+                <ScalarProperty Name="deleted" ColumnName="deleted" />
+                <ScalarProperty Name="DisplayOrder" ColumnName="DisplayOrder" />
+                <ScalarProperty Name="Slug" ColumnName="Slug" />
+                <ScalarProperty Name="IsHome" ColumnName="IsHome" />
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="image" ColumnName="image" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="products">
+            <EntityTypeMapping TypeName="WebMVCModel.product">
+              <MappingFragment StoreEntitySet="products">
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="slug" ColumnName="slug" />
+                <ScalarProperty Name="DisplayOrder" ColumnName="DisplayOrder" />
+                <ScalarProperty Name="ShowOnHomePage" ColumnName="ShowOnHomePage" />
+                <ScalarProperty Name="deleted" ColumnName="deleted" />
+                <ScalarProperty Name="updateOnUtc" ColumnName="updateOnUtc" />
+                <ScalarProperty Name="createdOnUtc" ColumnName="createdOnUtc" />
+                <ScalarProperty Name="brandid" ColumnName="brandid" />
+                <ScalarProperty Name="typeid" ColumnName="typeid" />
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="brand" ColumnName="brand" />
+                <ScalarProperty Name="image" ColumnName="image" />
+                <ScalarProperty Name="categoryid" ColumnName="categoryid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="users">
+            <EntityTypeMapping TypeName="WebMVCModel.user">
+              <MappingFragment StoreEntitySet="users">
+                <ScalarProperty Name="isAdmin" ColumnName="isAdmin" />
+                <ScalarProperty Name="lastname" ColumnName="lastname" />
+                <ScalarProperty Name="firstname" ColumnName="firstname" />
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="address" ColumnName="address" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Orders">
+            <EntityTypeMapping TypeName="WebMVCModel.Order">
+              <MappingFragment StoreEntitySet="Orders">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="CreateOnUtc" ColumnName="CreateOnUtc" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="brands">
+            <EntityTypeMapping TypeName="WebMVCModel.brand">
+              <MappingFragment StoreEntitySet="brands">
+                <ScalarProperty Name="Delete" ColumnName="Delete" />
+                <ScalarProperty Name="UpdateOnUtc" ColumnName="UpdateOnUtc" />
+                <ScalarProperty Name="CreateOnUtc" ColumnName="CreateOnUtc" />
+                <ScalarProperty Name="DisplayOrder" ColumnName="DisplayOrder" />
+                <ScalarProperty Name="ShowOnHomePage" ColumnName="ShowOnHomePage" />
+                <ScalarProperty Name="Slug" ColumnName="Slug" />
+                <ScalarProperty Name="avata" ColumnName="avata" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrderDetails">
+            <EntityTypeMapping TypeName="WebMVCModel.OrderDetail">
+              <MappingFragment StoreEntitySet="OrderDetails">
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

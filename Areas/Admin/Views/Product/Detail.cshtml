@@ -1,0 +1,122 @@
+﻿@model WebShop.Context.product
+
+@{
+    ViewBag.Title = "Detail";
+}
+
+<h2>Detail</h2>
+
+<div>
+    <h4>product</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.price)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.price)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.brand)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.brand)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.image)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.image)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.categoryid)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.categoryid)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.typeid)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.typeid)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.brandid)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.brandid)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.createdOnUtc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.createdOnUtc)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.updateOnUtc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.updateOnUtc)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.deleted)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.deleted)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ShowOnHomePage)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ShowOnHomePage)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DisplayOrder)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DisplayOrder)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.slug)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.slug)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

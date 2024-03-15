@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="WebMVCModelStoreContainer" CdmEntityContainer="WebMVC">
+    <EntitySetMapping Name="categories">
+      <EntityTypeMapping TypeName="WebMVCModel.category">
+        <MappingFragment StoreEntitySet="categories">
+          <ScalarProperty Name="UpdateOnUtc" ColumnName="UpdateOnUtc" />
+          <ScalarProperty Name="CeeateOnUtc" ColumnName="CeeateOnUtc" />
+          <ScalarProperty Name="deleted" ColumnName="deleted" />
+          <ScalarProperty Name="DisplayOrder" ColumnName="DisplayOrder" />
+          <ScalarProperty Name="Slug" ColumnName="Slug" />
+          <ScalarProperty Name="IsHome" ColumnName="IsHome" />
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="image" ColumnName="image" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="products">
+      <EntityTypeMapping TypeName="WebMVCModel.product">
+        <MappingFragment StoreEntitySet="products">
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="slug" ColumnName="slug" />
+          <ScalarProperty Name="DisplayOrder" ColumnName="DisplayOrder" />
+          <ScalarProperty Name="ShowOnHomePage" ColumnName="ShowOnHomePage" />
+          <ScalarProperty Name="deleted" ColumnName="deleted" />
+          <ScalarProperty Name="updateOnUtc" ColumnName="updateOnUtc" />
+          <ScalarProperty Name="createdOnUtc" ColumnName="createdOnUtc" />
+          <ScalarProperty Name="brandid" ColumnName="brandid" />
+          <ScalarProperty Name="typeid" ColumnName="typeid" />
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="price" ColumnName="price" />
+          <ScalarProperty Name="brand" ColumnName="brand" />
+          <ScalarProperty Name="image" ColumnName="image" />
+          <ScalarProperty Name="categoryid" ColumnName="categoryid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="users">
+      <EntityTypeMapping TypeName="WebMVCModel.user">
+        <MappingFragment StoreEntitySet="users">
+          <ScalarProperty Name="isAdmin" ColumnName="isAdmin" />
+          <ScalarProperty Name="lastname" ColumnName="lastname" />
+          <ScalarProperty Name="firstname" ColumnName="firstname" />
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="phone" ColumnName="phone" />
+          <ScalarProperty Name="address" ColumnName="address" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Orders">
+      <EntityTypeMapping TypeName="WebMVCModel.Order">
+        <MappingFragment StoreEntitySet="Orders">
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="CreateOnUtc" ColumnName="CreateOnUtc" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="brands">
+      <EntityTypeMapping TypeName="WebMVCModel.brand">
+        <MappingFragment StoreEntitySet="brands">
+          <ScalarProperty Name="Delete" ColumnName="Delete" />
+          <ScalarProperty Name="UpdateOnUtc" ColumnName="UpdateOnUtc" />
+          <ScalarProperty Name="CreateOnUtc" ColumnName="CreateOnUtc" />
+          <ScalarProperty Name="DisplayOrder" ColumnName="DisplayOrder" />
+          <ScalarProperty Name="ShowOnHomePage" ColumnName="ShowOnHomePage" />
+          <ScalarProperty Name="Slug" ColumnName="Slug" />
+          <ScalarProperty Name="avata" ColumnName="avata" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OrderDetails">
+      <EntityTypeMapping TypeName="WebMVCModel.OrderDetail">
+        <MappingFragment StoreEntitySet="OrderDetails">
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+          <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
